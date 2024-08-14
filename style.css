@@ -1,0 +1,77 @@
+body {
+    margin: 25vh;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-image: url(https://i.redd.it/xtnq910zl4571.gif);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.game-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f0f0f075;
+    border: 2px solid #cccccc0b;
+    border-radius: 10px;
+}
+
+#player-gif, #enemy-gif {
+    width: 150px;
+}
+
+#game-info {
+    text-align: center;
+    flex: 1;
+}
+
+#game {
+    background: #cec6b2d1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#controls {
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    background-color: #663b03;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8a5e2e;
+}
+
+#reset-btn {
+    background-color: #663b03;
+}
+
+#win-count {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#player-status, #generic-boss-status, #remaining-enemies {
+    margin: 10px 0;
+}
+
+#log {
+    margin-top: 20px;
+    text-align: left;
+}

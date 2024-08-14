@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarnished Boss Fight</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Game Container -->
+    <div class="game-container">
+        <!-- Player GIF -->
+        <img id="player-gif" src="https://cdnb.artstation.com/p/assets/images/images/039/408/197/original/arkady-kim-eldenr.gif?1625809811" alt="Player">
+    
+            <!-- Game Info and Controls inside of the game Container -->
+            <div id="game-info">
+                <div id="game">
+                    <h1>Tarnished Boss Fight</h1>
+                    <div id="win-count">Wins: 0</div>
+                    <div id="status">
+                        <p id="player-status"></p>
+                        <p id="generic-boss-status"></p>
+                        <p id="remaining-enemies">Remaining Enemies: 0</p>
+                    </div>
+                    <div id="controls">
+                        <button id="attack-btn">Attack</button>
+                        <button id="retreat-btn">Retreat</button>
+                        <button id="reset-btn">Reset</button>
+                        <div id="log"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Enemy GIF -->
+            <img id="enemy-gif" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ec65c1fd-1931-4d12-b6c3-ac980aee2b6c/dgoplj9-8263b88c-a684-43d8-8af7-a076691382d0.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VjNjVjMWZkLTE5MzEtNGQxMi1iNmMzLWFjOTgwYWVlMmI2Y1wvZGdvcGxqOS04MjYzYjg4Yy1hNjg0LTQzZDgtOGFmNy1hMDc2NjkxMzgyZDAuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.I7Nz7Un-72ZVRGveMav9lO3ZZaQC0dWSo6lEi4e_zGs" alt="Enemy">
+        </div>
+    
+        <!-- Background Music -->
+        <audio id="background-music" src="Elden Ring Main Theme (The Final Battle)  EPIC VERSION.mp3" loop></audio>
+    
+  <script src="app.js"></script>
+</body>
+</html>
