@@ -81,11 +81,13 @@ class Player {
   
 // Function adding game Log (adding a scroll to buttom for user) //
 
+// Function to add a message to the log and scroll to the bottom
 function logMessage(message) {
   const logDiv = document.getElementById('log');
   const p = document.createElement('p');
   p.textContent = message;
   logDiv.appendChild(p);
+  logDiv.scrollTop = logDiv.scrollHeight;
 }
 
 
