@@ -71,7 +71,17 @@ button:hover {
     margin: 10px 0;
 }
 
-#log {
+#log-container {
     margin-top: 20px;
+    padding: 10px;
+    background-color: #cec6b2d1;
+    border: 1px solid #cccccc0b;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
     text-align: left;
+}
+
+#log {
+    margin-top: 10px;
 }

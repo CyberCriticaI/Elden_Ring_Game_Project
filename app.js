@@ -27,7 +27,7 @@ class Player {
     }
   }
 
-  let player, genericBosses, currentGenericBossIndex;
+  let player, genericBosses, currentGenericBossIndex, winCount;
 
   function initializeGame() {
     player = new Player("Player", 20, 5, 0.7);
@@ -40,6 +40,7 @@ class Player {
       );
     });
     currentGenericBossIndex = 0;
+    winCount = 0;
     
     document.getElementById('log').innerHTML = '';
     updateStatus();
@@ -62,56 +63,77 @@ class Player {
     document.getElementById('win-count').textContent = `Wins: ${winCount}`;
   }
   
-  function logMessage(message) {
-    const logDiv = document.getElementById('log');
-    const p = document.createElement('p');
-    p.textContent = message;
-    logDiv.appendChild(p);
+  
+// function dealing with all of the attacks from player and enemies //
+
+  function playerAttack() {
+    const genericBoss = genericBosses[currentGenericBossIndex];
+    const playerHit = player.attack(genericBoss);
+    
+    if (genericBoss.isAlive()) {
+      if (!playerHit) {
+        logMessage(`${genericBoss.name} retaliates while the player missed!`);
+      } else {
+        logMessage(`${genericBoss.name} is still standing and retaliates!`);
+      }
+    } else {
+      logMessage(`${genericBoss.name} has been slain!`);
+      winCount++;
+      currentGenericBossIndex++;
+      if (currentGenericBossIndex < genericBosses.length) {
+        logMessage("... a new area boss has entered the vicinity...");
+      } else {
+        logMessage("You have defeated all the enemies in the area!");
+      }
+      updateStatus();
+      return; // End the turn early if the boss is slain //
+    }
+    
+    endOfTurn();
   }
   
+  function bossAttack() {
+    const genericBoss = genericBosses[currentGenericBossIndex];
+    if (genericBoss.attack(player)) {
+      logMessage(`${genericBoss.name} strikes back!`);
+    }
+    
+    if (!player.isAlive()) {
+      logMessage("You have been slain... Game Over.");
+      document.getElementById('attack-btn').disabled = true;
+      document.getElementById('retreat-btn').disabled = true;
+    }
+    
+    updateStatus();
+  }
+  
+//     Boss hits back if it lives the players attack //
+
+
+  function endOfTurn() {
+    if (genericBosses[currentGenericBossIndex].isAlive()) {
+      bossAttack();
+    }
+  }
+  
+// Function used for after killing all of the enemies //
+
   function handleAttack() {
     if (currentGenericBossIndex >= genericBosses.length) {
       logMessage("You have defeated all the enemies in the area!");
       return;
     }
-  
-    const genericBoss = genericBosses[currentGenericBossIndex];
-  
-    if (player.attack(genericBoss)) {
-      if (genericBoss.isAlive()) {
-        if (!genericBoss.attack(player)) {
-          if (!player.isAlive()) {
-            logMessage("You have been slain... Game Over.");
-            document.getElementById('attack-btn').disabled = true;
-            document.getElementById('retreat-btn').disabled = true;
-            return;
-          }
-        } else {
-          logMessage(`${genericBoss.name} strikes back!`);
-        }
-      } else {
-        logMessage(`${genericBoss.name} has been slain!`);
-        currentGenericBossIndex++;
-        if (currentGenericBossIndex < genericBosses.length) {
-          logMessage("... a new area boss has entered the vicinity...");
-        } else {
-          logMessage("You have defeated all the enemies in the area!");
-        }
-      }
-    }
-  
-    updateStatus();
+    
+    playerAttack();
   }
 
-  
-
-  // Music and volume controls (0 - 1)
+  // Music and volume controls (0 - 1) //
 
   const music = document.getElementById('background-music');
     music.volume = 0.04;
     // music.play();
 
-    // comment out music when working due to music looping
+    // comment out music when working due to music looping //
   
   function handleRetreat() {
     logMessage("You chose to retreat. Game Over.");
